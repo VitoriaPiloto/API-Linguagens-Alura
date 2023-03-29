@@ -9,3 +9,12 @@ Repositório criado para guardar os estudos da semana de imersão em Java da Alu
    - Futuras features:
        - Personalizar o terminal
        - Criar um front para exibir os filmes
+
+2. Aula 2 - Gerar figurinhas de Whatsapp 
+
+- Utilização do imageIO
+- Utilização do GRaphics2D
+- Manipulação de arquivos
+   - Futuras features:
+       - Personalizar o texto de acordo com as avaliações
+       - Salvar as novas imagens em um diretório
