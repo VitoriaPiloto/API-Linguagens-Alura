@@ -1,5 +1,7 @@
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -10,7 +12,7 @@ import java.util.List;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws Exception {
         //Fazer uma conexão http e buscar os top 250 filmes
         String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
         //Cria um endereço unico
@@ -27,9 +29,16 @@ public class Main {
         List<Map<String,String>> listaDeFilmes = parser.parse(body);
         //Exibir e manipular
         for (Map<String,String> filme: listaDeFilmes) {
+            String urlImagem = filme.get("image");
+            String titulo = filme.get("title");
+            String nomeDoArquivo = titulo + ".png";
+            InputStream inputStream = new URL(urlImagem).openStream();
+            var geradora = new GeradoraDeFigurinhas();
+            geradora.cria(inputStream,nomeDoArquivo);
+            //Impressoes
             System.out.println(filme.get("title"));
             System.out.println(filme.get("image"));
-            System.out.println(filme.get("rating"));
+            System.out.println(filme.get("imDbRating"));
             System.out.println();
         }
     }
