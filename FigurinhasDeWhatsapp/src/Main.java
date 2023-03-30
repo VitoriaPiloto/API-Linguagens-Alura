@@ -1,6 +1,5 @@
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Map;
 import java.util.List;
 
 public class Main {
@@ -11,21 +10,19 @@ public class Main {
         //Criar a instância de clienteHttp
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
-        //Extrair título, poster e classificação
-        JsonParser parser = new JsonParser();
-        List<Map<String,String>> listaDeConteudos = parser.parse(json);
+        //Extração de dados
+        ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
         //Exibir e manipular
-        for (Map<String,String> conteudo: listaDeConteudos) {
-            String urlImagem = conteudo.get("url");
-            String titulo = conteudo.get("title")
-                    .replaceAll(":","");
-            String nomeDoArquivo = "images/saida/" + titulo + ".png";
-            InputStream inputStream = new URL(urlImagem).openStream();
+        List<Conteudo> conteudos = extrator.extraiConteudos(json);
+
+        for (Conteudo conteudo: conteudos) {
+            String nomeDoArquivo = "images/saida/" + conteudo.getTitulo() + ".png";
+            InputStream inputStream = new URL(conteudo.getUrl()).openStream();
             var geradora = new GeradoraDeFigurinhas();
             geradora.cria(inputStream,nomeDoArquivo);
             //Impressoes
-            System.out.println(conteudo.get("title"));
-            System.out.println(conteudo.get("url"));
+            System.out.println(conteudo.getTitulo());
+            System.out.println(conteudo.getUrl());
             System.out.println();
         }
     }
