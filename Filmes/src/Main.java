@@ -31,7 +31,7 @@ public class Main {
         for (Map<String,String> filme: listaDeFilmes) {
             String urlImagem = filme.get("image");
             String titulo = filme.get("title");
-            String nomeDoArquivo = titulo + ".png";
+            String nomeDoArquivo = "images/saida/" + titulo + ".png";
             InputStream inputStream = new URL(urlImagem).openStream();
             var geradora = new GeradoraDeFigurinhas();
             geradora.cria(inputStream,nomeDoArquivo);
