@@ -26,4 +26,7 @@ public class Linguagem {
     public int getRanking() {
         return ranking;
     }
+
+    public Linguagem() {
+    }
 }
