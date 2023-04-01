@@ -34,6 +34,6 @@ Repositório criado para guardar os estudos da semana de imersão em Java da Alu
    - mongo db starter 
    - tester dependency
 - Dificuldade: 
-   - Erro 500 (comunicação com o servidor - mongodb, no qual não consegui  resolver). Aceito sugestões de como consertar esse erro. A exceção lançada é a timeout exception. O código está exatamente igual ao dos professores e outros alunos. 
+   - Erro 500 que foi resolvido corrigindo o arquivo application.properties
     
-5. Aula 5 - Lançando na nuvem a api (Não conseguirei seguir, pois travei na aula 4 com esse erro, no qual não consigo resolver. Futuramente, assim que resolvido, correirei atrás de dar continuidade ao projeto)
+5. Aula 5 - Lançando na nuvem a api 
